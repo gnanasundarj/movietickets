@@ -1,0 +1,24 @@
+.section {
+  min-height: 500px;
+}
+.images {
+  width: 250px;
+  height: 380px;
+}
+.size {
+  padding: 30px;
+  /* background-color:#e4d0d5; */
+  width: 80%;
+  height: 450px;
+  padding-bottom: 0%;
+
+  border-radius: 30px !important;
+}
+
+.text {
+  text-align: left;
+  padding-left: 80px;
+}
+.onHover {
+  cursor: pointer;
+}

@@ -1,0 +1,42 @@
+.section {
+  min-height: 600px;
+}
+.section-Movie {
+  min-height: 300px;
+
+  background-image: url("../images/img.jpg");
+  color: white;
+}
+
+.movie-detail {
+  background-color: brown;
+ 
+  border-radius: 5px;
+ 
+}
+.margin{
+
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.theater{
+
+    border: 1px solid black;
+    cursor: pointer;
+}
+.text-col1{
+    color: rgb(115, 108, 108);
+}
+.text-col2{
+    color: rgb(226, 144, 144);
+}
+.text-col3{
+    color: rgb(114, 138, 114);
+}
+.theaterFont{
+  color: black;
+}
+.movieFont{
+  color: green;
+}
