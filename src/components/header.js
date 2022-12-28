@@ -48,7 +48,7 @@ function Header(props) {
         <div className="d-flex justify-content-center align-items-center">
           <input
             type="text"
-            className="form-control"
+            className="form-control inputSearch"
             placeholder="enter movie to search"
             onChange={(e) => {
               setinput(e.target.value);
@@ -65,7 +65,7 @@ function Header(props) {
           >
             <button
               style={{ backgroundColor: "red", color: "white" }}
-              className=" text-center  h-100 w-100  "
+              className=" text-center  h-100 w-100 inputSearch "
               onClick={search}
             >
               Search
@@ -82,7 +82,8 @@ function Header(props) {
           >
             <button
               style={{ backgroundColor: "red", color: "white" }}
-              className=" text-center  h-100 w-100 "
+              className=" text-center  h-100 w-100 inputSearch
+      "
               onClick={logout}
             >
               LOGOUT
@@ -95,7 +96,7 @@ function Header(props) {
           >
             <button
               style={{ backgroundColor: "red", color: "white" }}
-              className=" text-center  h-100 w-100 "
+              className=" text-center  h-100 w-100 inputSearch"
               onClick={() => {
                 navigate("/login");
               }}

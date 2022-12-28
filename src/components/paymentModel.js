@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState, useContext } from "react";
 import { Modal } from "react-bootstrap";
 import UserContext from "../store/context";
+import "../styles/tickets.css";
 function PaymentModel(props) {
   let { theaterDetail, movieDetail } = useContext(UserContext);
   let { show, handleClose, selectedseat, amount } = props;
@@ -10,8 +11,6 @@ function PaymentModel(props) {
     setPaymentsuccess(!paymentSuccess);
     // console.log(paymentSuccess);
   }
-
-  
 
   return (
     <div>
@@ -29,7 +28,7 @@ function PaymentModel(props) {
             <div className="d-flex justify-content-center align-items-center">
               <img
                 style={{ width: "200px", height: "200px" }}
-                src={movieDetail.posterUrl}
+                src={movieDetail.image}
                 alt="img"
               />
             </div>
@@ -38,23 +37,23 @@ function PaymentModel(props) {
         <hr />
         <div>
           <div className="m-3 row">
-            <span className="col-4">Movie Name :</span>
+            <span className="col-4 text">Movie Name :</span>
             <div className="col">{movieDetail.name}</div>
           </div>
           <div className="m-3 row">
-            <span className="col-4">Theater Name :</span>
+            <span className="col-4 text">Theater Name :</span>
             <div className="col">{theaterDetail.name}</div>
           </div>
           <div className="m-3 row">
-            <div className="col-4">Seats selected :</div>
+            <div className="col-4 text">Seats selected :</div>
             <div className="col">{selectedseat.length}</div>
           </div>
           <div className="m-3 row">
-            <div className="col-4">Total Amount :</div>
+            <div className="col-4 text">Total Amount :</div>
             <div className="col">{amount}</div>
           </div>
           <div className=" m-3 row">
-            <div className="col-4">Seat No: </div>
+            <div className="col-4 text">Seat No: </div>
             <div className="col">
               <div className="d-flex">
                 {selectedseat.map((id, index) => {
@@ -63,7 +62,10 @@ function PaymentModel(props) {
                     symbol = ".";
                   }
                   return (
-                    <div key={index} style={{ marginLeft: "3px" }}>{`${id}${symbol}`}</div>
+                    <div
+                      key={index}
+                      style={{ marginLeft: "3px" }}
+                    >{`${id}${symbol}`}</div>
                   );
                 })}
               </div>

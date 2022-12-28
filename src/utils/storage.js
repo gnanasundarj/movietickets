@@ -1,12 +1,10 @@
 function Storage(data) {
-  let { accessToken, email, name, userId, userStatus, userTypes } = data;
+  let { mail, userID, username, usertype } = data;
 
-  localStorage.setItem("accessToken", accessToken);
-  localStorage.setItem("email", email);
-  localStorage.setItem("name", name);
-  localStorage.setItem("userId", userId);
-  localStorage.setItem("userStatus", userStatus);
-  localStorage.setItem("userTypes", userTypes);
+  localStorage.setItem("email", mail);
+  localStorage.setItem("name", username);
+  localStorage.setItem("userId", userID);
+  localStorage.setItem("userTypes", usertype);
 }
 
 export default Storage;

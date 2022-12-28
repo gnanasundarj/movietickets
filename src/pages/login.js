@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 function Login(props) {
   let { handleSubmit, toggle, errormsgLogin } = props;
   let [loginData, setloginData] = useState({});
@@ -7,7 +9,6 @@ function Login(props) {
     loginData[e.target.id] = e.target.value;
     // console.log(loginData);
   }
- 
 
   function handleLogin(e) {
     e.preventDefault();
@@ -48,7 +49,11 @@ function Login(props) {
           >
             doesn't have an account? sign up
           </div>
-          {errormsgLogin !== "" ? <div className=" text-danger text-center">{errormsgLogin}</div> : ""}
+          {errormsgLogin !== "" ? (
+            <div className=" text-danger text-center">{errormsgLogin}</div>
+          ) : (
+            ""
+          )}
         </form>
       </div>
     </div>

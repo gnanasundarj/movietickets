@@ -28,7 +28,7 @@ function App() {
         ></Route>
         <Route
           exact
-          path={"/select-seats/:_id/:id"}
+          path={"/select-seats/:id"}
           // path={"/"}
 
           element={<SelectTickets />}

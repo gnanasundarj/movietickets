@@ -26,42 +26,43 @@ function TheaterDetail() {
 
   let {
     name: moviename = "",
-    description = "",
-    releaseDate = "",
+    category = "",
+    date = "",
     director = "",
-    releaseStatus = "",
+    status = "",
     language = "",
   } = movieDetail;
 
   const fetchMovieDetail = (movieId) => {
     getMovieDetails(movieId)
       .then((res) => {
-        const { data, status } = res;
-        if (status === 200) {
-          // console.log(data);
-          setMovieDetail(data);
+        if (res.exists()) {
+          setMovieDetail({ ...res.data(), id: movieId });
+        } else {
+          console.log("No such document!");
         }
       })
       .catch((err) => {
-        console.log(err.message);
+        console.log(err);
       });
   };
   const fetchAllTheatres = () => {
-    getAllTheatres().then((res) => {
-      const { data, status } = res;
-      if (status === 200) {
-        // console.log(data);
-        // call a function which will filter out theatres for current movie
-        // out of all theatres
-        const filteredTheatres = getTheatresForCurrentMovie(data, _id);
-        setCurrentMovieTheatres(filteredTheatres);
-        // console.log(filteredTheatres);
-      }
-    });
+    getAllTheatres(_id)
+      .then((res) => {
+        let result = [];
+
+        res.forEach((doc) => {
+          result.push({ ...doc.data(), id: doc.id });
+        });
+        setCurrentMovieTheatres(result);
+      })
+      .catch((res) => {
+        console.log(res);
+      });
   };
   function selectTickets(theaterId, theaterData) {
     // console.log(theaterId, _id);
-    navigate(`/select-seats/${_id}/${theaterId}`);
+    navigate(`/select-seats/${theaterId}`);
     setDetail(theaterData, "theater");
   }
 
@@ -76,7 +77,7 @@ function TheaterDetail() {
               style={{ height: "40px" }}
               className="movie-detail text-center d-flex justify-content-center align-items-center  p-2"
             >
-              {description}
+              {category}
             </div>
             <div
               style={{ height: "40px" }}
@@ -88,12 +89,12 @@ function TheaterDetail() {
               style={{ height: "40px" }}
               className="movie-detail bg-success text-center d-flex justify-content-center align-items-center p-2"
             >
-              {releaseStatus}
+              {status}
             </div>
           </div>
           <hr />
           <div className="mt-4">Director: {director}</div>
-          <div>Release date: {releaseDate}</div>
+          <div>Release date: {date}</div>
         </div>
         <h2 className="text-center ">Select theater</h2>
         <br />
@@ -105,7 +106,7 @@ function TheaterDetail() {
                 className="theater row"
                 style={{ height: "70px" }}
                 onClick={(e) => {
-                  selectTickets(item._id, item);
+                  selectTickets(item.id, item);
                   // console.log(item._id);
                 }}
               >

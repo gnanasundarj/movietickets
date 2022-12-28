@@ -1,11 +1,13 @@
-.section-ticket{
-
-    min-height: 700px;
-    background-image: url("../images/img.jpg");
+.section-ticket {
+  min-height: 700px;
+  background-image: url("../images/img.jpg");
 }
-.screen{
-    width: 500px;
-    border-top: 100px solid white;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
+.screen {
+  width: 500px;
+  border-top: 100px solid white;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+}
+.text {
+  font-weight: 600;
 }

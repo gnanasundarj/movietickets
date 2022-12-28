@@ -1,15 +1,14 @@
-
-
-.auth{
-    height: 400px;
-    width: 300px; 
-    
+.auth {
+  height: 400px;
+  width: 300px;
 }
 
-.img{
-
-    background-image: url("../images/img.jpg");
+.img {
+  background-image: url("../images/img.jpg");
 }
-.onhover{
-    cursor: pointer;
+.onhover {
+  cursor: pointer;
+}
+.inputSearch {
+  border-radius: 5px;
 }

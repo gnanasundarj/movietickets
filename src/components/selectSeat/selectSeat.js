@@ -2,7 +2,7 @@ import { SeatArrangement } from "../../utils/seatArrangement";
 import React, { useEffect, useState } from "react";
 import { getSeatNumber } from "../../utils/seatArrangement";
 import PaymentModel from "../paymentModel";
-import { defaultAccupiedSeats } from "../../constents/Constants";
+import { defaultAccupiedSeats } from "../../constants/Constants";
 import "../seat/seat.css";
 import "../selectSeat/selectSeat.css";
 import { useNavigate } from "react-router";

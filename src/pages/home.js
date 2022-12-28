@@ -11,6 +11,8 @@ import { getAllMovies } from "../api/moviesList";
 import Moviefallback from "../components/fallback";
 import Carousels from "../components/carousal/carousal";
 import { useNavigate } from "react-router";
+import { collection, getDocs } from "firebase/firestore";
+import { db, auth } from "../firebase/firebase";
 import "../styles/home.css";
 import "../components/movies.css";
 
@@ -21,18 +23,27 @@ function Home() {
   let searchBar = true;
 
   let navigate = useNavigate();
+  // async function getMovies() {
+  //   return await getDocs(collection(db, "movieDetails"));
+  // }
   // {to get all movies}////////////////////////////////
   useEffect(() => {
     getAllMovies()
       .then((res) => {
-        if (res.status === 200) {
-          setMovies(res.data);
-          setallmovies(res.data);
-          setLoader(false);
-        }
-        // console.log(res);
+        let result = [];
+        res.forEach((res) => {
+          let obj = {
+            id: res.id,
+            ...res.data(),
+          };
+          result.push(obj);
+        });
+        setMovies(result);
+        setallmovies(result);
+        setLoader(false);
       })
-      .catch((res) => console.log(res));
+      .catch((res) => {
+      });
   }, []);
 
   // ////////////////////to know user login status////////////
@@ -53,39 +64,42 @@ function Home() {
     <div className="bg">
       <Header searchMovies={searchMovies} searchBar={searchBar} />
       <Carousels images={[img1, img2, img3, img4]} />
-      <h3 className="container mt-3 ">Recommended Movies</h3>
+      <h3 className="container mt-3  " style={{ marginLeft: "170px" }}>
+        Recommended Movies
+      </h3>
 
       {loader ? (
         <Moviefallback />
       ) : (
         <div className="section container ">
-          <div className="row">
-            <div className="section container-fluid ">
-              <div className="row ">
-                {movies.map((img, ind) => {
-                  return (
-                    <div
-                      className="col-lg-4 col-sm-5 text-center onHover "
-                      onClick={(e) => handleMovieselect(img._id)}
-                      key={ind + 1}
-                    >
+          <div className="row ">
+            {movies.map((img, ind) => {
+              return (
+                <div
+                  className="col-lg-4 col-sm-5  d-flex justify-content-center align-items-center  "
+                  onClick={(e) => handleMovieselect(img.id)}
+                  key={ind + 1}
+                >
+                  <div className="onHover">
+                    <div className="imgContainer">
                       <img
-                        src={img.posterUrl}
+                        src={img.image}
                         alt="poster"
-                        className="size "
+                        className="images "
                         key={ind + 50}
                       />
-                      <h5 className="text" key={ind + 100}>
-                        {img.name}
-                      </h5>
-                      <h6 className="text text-muted" key={ind + 200}>
-                        {img.description}
-                      </h6>
                     </div>
-                  );
-                })}
-              </div>
-            </div>
+
+                    <h5 className="text" key={ind + 100}>
+                      {img.name}
+                    </h5>
+                    <h6 className="text text-muted" key={ind + 200}>
+                      {img.category}
+                    </h6>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

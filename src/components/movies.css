@@ -1,24 +1,29 @@
 .section {
   min-height: 500px;
 }
-.images {
-  width: 250px;
-  height: 380px;
-}
-.size {
-  padding: 30px;
-  /* background-color:#e4d0d5; */
-  width: 80%;
-  height: 450px;
-  padding-bottom: 0%;
 
-  border-radius: 30px !important;
+.images {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+  transition: 0.5s all ease-in-out;
 }
 
 .text {
-  text-align: left;
-  padding-left: 80px;
+  padding-left: 20px;
 }
 .onHover {
+  width: 300px;
+  height: 490px;
   cursor: pointer;
+}
+
+.imgContainer {
+  border-radius: 20px !important;
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+}
+.imgContainer:hover img {
+  transform: scale(1.1);
 }

@@ -1,5 +1,5 @@
 import Seat from "../components/seat/seat";
-import { rows, col, defaultAccupiedSeats } from "../constents/Constants";
+import { rows, col, defaultAccupiedSeats } from "../constants/Constants";
 
 export const getSeatNumber = (rowIndex, colIndex) => {
   return rowIndex * rows + colIndex + 1;

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 
 function Signup(props) {
-  let [userType, setuserType] = useState("SELECT");
+  let [userType, setuserType] = useState("SELECT       ");
   let [signupdata, setsignupdata] = useState({});
   let { handleSubmit, toggle, errormsgSignin } = props;
   function onchangesignup(e) {
@@ -11,11 +11,10 @@ function Signup(props) {
 
     // console.log(signupdata);
   }
-  
+
   function handleLogin(e) {
     e.preventDefault();
     handleSubmit(signupdata, userType);
-
   }
   function handleSelect(key) {
     setuserType(key);
