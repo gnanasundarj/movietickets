@@ -17,11 +17,4 @@ export const getAllTheatres = async (id) => {
   const q = query(citiesRef, where("movieID", "array-contains-any", [id]));
   return await getDocs(q);
 };
-export const getTheaterById = async (theatreId) => {
-  const url = `${BASE_URL}/mba/api/v1/theatres/${theatreId}`;
-  return await axios.get(url, {
-    headers: {
-      "x-access-token": localStorage.getItem("accessToken"),
-    },
-  });
-};
+
